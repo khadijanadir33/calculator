@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+        background-color: rgb(223, 204, 185);
+    }
+  .calc{
+    background-color: #b6b4b4;
+    align-items: center;
+    border: 1px solid;
+    border-radius: 20px;
+    margin-top: 10%;
+   margin-left: 35%;
+    height: 300px;
+   width:30%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap:20px;
+    box-shadow: -4px 9px 9px 7px rgba(0,0,0,0.79);
+  }
+  .calc:hover{
+    height: 320px;
+   width:32%;
+  }
+  input{
+    width: 80%;
+    height: 10%;
+    border-radius: 10px;
+  }
+  select{
+    width:80.5%;
+    height: 10.5%;
+    font-size: large;
+    border-radius: 10px;
+  }
+#btn{
+    width:80.5%;
+    height: 10.5%;
+    font-size: large;
+    background-color: #505050;
+    border: none;
+    color:wheat;
+    border-radius: 10px;
+}
+#btn:hover{
+background-color: green;
+cursor: pointer;
+}
+  option{
+    text-align: center;
+    font-size: large;
+  }
+  h1{
+    color:wheat;
+    background-color: #b6b4b4;
+  }
+ </style>
+</head>
+<body>
+    <div class="calc">
+        <h1>Calculator</h2>
+        <input type="number" id="num1">
+         <input type="number" id="num2">
+         <select  id="operators">
+            <option value="">select operator</option>
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+            <option value="%">%</option>
+         </select>
+         <input id="btn" type="submit" value="Try me!">
+    </div>
+
+
+
+    <script>
+          setInterval(()=>{
+            alert("Please, use me…")
+          },30000
+          )
+        function msg(num1,num2,op,res){
+            
+            console.log( `le resultat de ${num1} ${op} ${num2} est ${res}`)
+               alert( `le resultat de ${num1} ${op} ${num2} est ${res}`)
+        }
+     const btn=document.getElementById('btn')
+     const select=document.getElementById('operators')
+     let num1,num2,op ,res;
+     btn.onclick=()=>{
+      
+        num1=parseInt(document.getElementById('num1').value)
+        num2=parseInt(document.getElementById('num2').value)
+        op=select.value
+        if(num1>=0 && num2>=0){
+       switch(op){
+         case "+": res =num1+num2
+                msg(num1,num2,op,res)
+               ;break;
+        case "-":res =num1-num2
+                 msg(num1,num2,op,res)  ;break;
+        case "*":res =num1*num2
+                 msg(num1,num2,op,res)  ;break;
+        case "/":if(num2==0){
+                   alert("It’s over 9000!")
+                   console.log("It’s over 9000!")
+                }
+                else{
+                   res= num1/num2
+                   msg(num1,num2,op,res)
+                };break
+        case "%":if(num2==0){
+                   alert("It’s over 9000!")
+                   console.log("It’s over 9000!")
+                }
+                else{
+                   res= num1%num2
+                   msg(num1,num2,op,res)
+                };break
+       }
+    }
+    else{
+        alert("'Erreur :('.")
+    }
+    document.getElementById('num1').value=""
+
+     document.getElementById('num2').value=""
+      select.value=""
+     }
+  
+    </script>
+</body>
+</html>
